@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Analyze Google Ads and Meta Ads metrics with powerful insights and performance tracking.">
+    <meta name="keywords" content="Google Ads, Meta Ads, Analytics, PPC, Digital Marketing, Ads Analysis">
+    <meta name="author" content="Ads Analyzer">
+    <meta property="og:title" content="Ads Analyzer - Google Ads & Meta Ads Metrics">
+    <meta property="og:description" content="Upload your ads CSV and get instant insights on performance metrics.">
+    <meta property="og:type" content="website">
+    <title>Ads Analyzer - Google Ads & Meta Ads Metrics Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%234F46E5'>📊</text></svg>">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-emoji">📊</span>
+                <h1>Ads Analyzer</h1>
+            </div>
+            <p class="tagline">Unlock insights from your Google & Meta Ads data</p>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <section class="upload-section">
+            <h2>Upload Your Ads CSV</h2>
+            <div class="upload-box" id="uploadBox">
+                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <p class="upload-text">Drag and drop your CSV file here</p>
+                <p class="upload-subtext">or</p>
+                <label class="browse-btn">
+                    Browse Files
+                    <input type="file" id="fileInput" accept=".csv" style="display: none;">
+                </label>
+                <p class="file-size-info">Maximum file size: 10MB</p>
+            </div>
+
+            <div class="template-section">
+                <p>Not sure about the format?</p>
+                <a href="{{ url_for('sample_template') }}" class="download-btn">
+                    Download Sample Template
+                </a>
+            </div>
+        </section>
+
+        <section id="resultsSection" class="results-section" style="display: none;">
+            <div class="results-header">
+                <h2>Analysis Results</h2>
+                <button id="resetBtn" class="reset-btn">← Analyze Another File</button>
+            </div>
+
+            <!-- Metrics Overview -->
+            <div class="metrics-grid" id="metricsGrid">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section" id="chartsSection">
+                <div class="chart-container">
+                    <h3>Daily Performance Trends</h3>
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Insights Section -->
+            <div class="insights-section">
+                <h3>📌 Key Insights</h3>
+                <div id="insightsList" class="insights-list">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="table-section">
+                <h3>Daily Performance Data</h3>
+                <div class="table-responsive">
+                    <table id="dataTable" class="data-table">
+                        <thead>
+                            <tr id="tableHeader"></tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="loadingSection" class="loading-section" style="display: none;">
+            <div class="spinner"></div>
+            <p>Analyzing your ads data...</p>
+        </section>
+
+        <section id="errorSection" class="error-section" style="display: none;">
+            <h3>⚠️ Error</h3>
+            <p id="errorMessage"></p>
+            <button onclick="resetAnalysis()" class="reset-btn">Try Again</button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Ads Analyzer. Analyze your ads data with ease.</p>
+            <p class="footer-links">
+                <a href="#" title="Privacy">Privacy</a> • 
+                <a href="#" title="Terms">Terms</a> • 
+                <a href="#" title="Contact">Contact</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
